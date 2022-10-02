@@ -1,0 +1,39 @@
+@import "../../variables";
+
+.instruction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+
+  div {
+    margin-top: 20px;
+  }
+
+  ol {
+    list-style-position: inside;
+
+    li {
+      margin-top: 5px;
+    }
+  }
+
+  .button{
+    margin-top: 40px;
+    button{
+      background-color: $button-color;
+      width: 250px;
+      height: 60px;
+      padding: 4px;
+      font-size: 1.1em;
+      border: 1.5px solid black;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px black;
+      &:hover{
+        border: 2px solid black;
+        box-shadow: 4px 4px 5px black;
+      }
+    }
+  }
+}

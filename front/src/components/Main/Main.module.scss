@@ -1,0 +1,82 @@
+@import "../../variables";
+
+.gameboy{
+  font-size: 1.2em;
+  font-weight: bold;
+  color: fuchsia;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info_about_us{
+  line-height: 125%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 100px;
+  .about_us, .why_we{
+    min-height: 100px;
+    padding: 40px;
+    border-bottom: 2px solid black;
+    h2 {
+      text-align: center;
+    }
+    p{
+      margin-top: 20px;
+    }
+  }
+  .about_us{
+    margin-left: 40px;
+  }
+  .why_we {
+    margin-right: 40px;
+  }
+}
+
+.button_to_shop{
+  display: flex;
+  justify-content: center;  
+  margin-top: 100px;
+  margin-bottom: 100px;
+  button{
+    width: 300px;
+    height: 70px;
+    font-size: 1.8em;
+    border: 3px solid black;
+    border-radius: 5px;
+    background-color: $button-color;
+    &:hover, &:active{
+      border:4px solid black;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .info_about_us {
+    line-height: 125%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .about_us, .why_we {
+      margin: 0 15px;
+      h2{
+        font-size: 1.2em;
+      }
+      p{
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  .button_to_shop{
+    button{
+      width: 180px;
+      height: 40px;
+      font-size: .8em;
+    }
+  }
+}
