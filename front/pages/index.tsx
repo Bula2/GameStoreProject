@@ -2,7 +2,7 @@
 const Index = () => {
   return (
     <div>
-     Game store!
+     Game store!!!
     </div>
   )
 }
