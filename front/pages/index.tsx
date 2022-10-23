@@ -1,9 +1,10 @@
+import MainLayout from "../layouts/MainLayout";
 
 const Index = () => {
   return (
-    <div>
-     Game store
-    </div>
+    <MainLayout>
+      <></>
+    </MainLayout>
   )
 }
 

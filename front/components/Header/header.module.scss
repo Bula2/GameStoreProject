@@ -1,0 +1,55 @@
+@import "../../variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.header{
+  height: 140px;
+  width: 100%;
+}
+
+.top{
+  background-color: $first-color;
+  height: 40px;
+}
+
+.bottom{
+  background-color: $second-color;
+  height: 90px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.title{
+  font-size: 1.1em;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  margin-top: -5px;
+  &__start{
+    color: $links-color;
+  }
+}
+
+.menu{
+  &__items{
+    display: flex;
+    &_item{
+      margin-right: 50px;
+      font-size: 1em;
+      cursor: pointer;
+      &:active, &:hover{
+        color: $links-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 890px) {
+  .title{
+    font-size: .9em;
+    margin-right: 50px;
+  };
+
+  .menu__items_item{}
+
+}
