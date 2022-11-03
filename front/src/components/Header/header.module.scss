@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 .header{
-  height: 140px;
+  height: 130px;
   width: 100%;
 }
 
@@ -17,16 +17,20 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid black;
 }
 
 .title{
-  font-size: 1.1em;
+  font-size: 1.5em;
   cursor: pointer;
   font-family: 'Press Start 2P', cursive;
-  margin-top: -5px;
   &__start{
     color: $links-color;
+  }
+  &:hover{
+    color: $links-color;
+    .title__start{
+      color: $first-color;
+    }
   }
 }
 
@@ -35,21 +39,23 @@
     display: flex;
     &_item{
       margin-right: 50px;
-      font-size: 1em;
+      font-size: 1.3em;
       cursor: pointer;
-      &:active, &:hover{
-        color: $links-color;
+      a{
+        &:active, &:hover{
+          color: $links-color;
+        }
       }
+
     }
   }
 }
 
 @media (max-width: 890px) {
   .title{
-    font-size: .9em;
+    font-size: .8em;
     margin-right: 50px;
   };
 
   .menu__items_item{}
-
 }

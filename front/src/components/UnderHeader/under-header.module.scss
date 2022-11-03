@@ -1,0 +1,30 @@
+@import "../../../variables";
+
+.wrapper{
+  height: 280px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $first-color;
+}
+
+.content{
+  margin-right: 30%;
+}
+
+.title{
+  color: $links-color;
+  font-size: 2.2em;
+}
+
+.paragraph{
+  color: $grey-color;
+  font-size: 1.1em;
+}
+
+.button{
+  width: 140px;
+  height: 45px;
+  font-size: 1.1em;
+}

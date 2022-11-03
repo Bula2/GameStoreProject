@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from "next/head";
 import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 interface IMainLayout {
   children: React.ReactNode
@@ -17,10 +18,11 @@ const MainLayout: React.FC<IMainLayout> = ({children}) => {
         <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
         <meta name="msapplication-TileColor" content="#2d89ef"/>
         <meta name="theme-color" content="#ffffff"/>
-        <title>{"GameStore"}</title>
+        <title>{"GamesNovel"}</title>
       </Head>
       <Header/>
       {children}
+      <Footer/>
     </>
   );
 };
