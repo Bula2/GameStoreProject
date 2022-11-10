@@ -2,6 +2,7 @@ import MainLayout from "../layouts/MainLayout";
 import UnderHeader from "../components/UnderHeader/UnderHeader";
 import styles from "./../styles/index.module.scss"
 import Image from "next/image";
+import BestSellers from "../components/BestSellers/BestSellers";
 
 const Index = () => {
   return (
@@ -23,6 +24,7 @@ const Index = () => {
             </p>
           </div>
         </div>
+        <BestSellers/>
       </>
     </MainLayout>
   )

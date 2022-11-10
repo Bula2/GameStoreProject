@@ -11,14 +11,28 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.top}></div>
       <div className={styles.bottom}>
-        <div className={styles.title}><h3 onClick={() => router.push("/")}><span className={styles.title__start}>Games</span>Novel</h3></div>
+        <div className={styles.header_title}>
+          <h3 onClick={() => router.push("/")} className={styles.title}>
+            <span className={styles.title__start}>Games</span>Novel
+          </h3>
+        </div>
         <div className={styles.menu}>
           <ul className={styles.menu__items}>
-            <li className={styles.menu__items_item}><Link href={"/"}>Главная</Link></li>
-            <li className={styles.menu__items_item}><Link href={"/shop"}>Магазин</Link></li>
-            <li className={styles.menu__items_item}><Link href={"/instruction"}>Инструкция</Link></li>
-            <li className={styles.menu__items_item}><Link href={"/basket"}>Корзина</Link></li>
-            <li className={styles.menu__items_item}><Link href={"/auth"}>Авторизация</Link></li>
+            <li className={styles.menu__items_item}>
+              <Link className={styles.menu__items_item_link} href={"/"}>Главная</Link>
+            </li>
+            <li className={styles.menu__items_item}>
+              <Link className={styles.menu__items_item_link} href={"/shop"}>Магазин</Link>
+            </li>
+            <li className={styles.menu__items_item}>
+              <Link className={styles.menu__items_item_link} href={"/instruction"}>Инструкция</Link>
+            </li>
+            <li className={styles.menu__items_item}>
+              <Link className={styles.menu__items_item_link} href={"/basket"}>Корзина</Link>
+            </li>
+            <li className={styles.menu__items_item}>
+              <Link className={styles.menu__items_item_link} href={"/auth"}>Авторизация</Link>
+            </li>
           </ul>
         </div>
       </div>

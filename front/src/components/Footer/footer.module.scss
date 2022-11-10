@@ -1,4 +1,4 @@
-@import "../../../variables";
+@import "../../styles/variables";
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 .footer{
@@ -36,7 +36,7 @@
 }
 
 .title{
-  font-size: 1.6em;
+  font-size: 2em;
   cursor: pointer;
   font-family: 'Press Start 2P', cursive;
   color: white;
