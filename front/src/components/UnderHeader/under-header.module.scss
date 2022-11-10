@@ -28,3 +28,13 @@
   height: 45px;
   font-size: 1.1em;
 }
+
+@media (max-width: $md) {
+  .content{
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+;
+}

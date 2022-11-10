@@ -13,7 +13,7 @@
 
 .bottom{
   background-color: $second-color;
-  height: 100px;
+  height: 110px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -24,7 +24,6 @@
   cursor: pointer;
   font-family: 'Press Start 2P', cursive;
   color: $first-color;
-  margin-top: 10px;
   &__start{
     color: $links-color;
   }
@@ -55,11 +54,17 @@
   }
 }
 
-@media (max-width: 890px) {
+@media (max-width: $md) {
   .title{
-    font-size: .8em;
-    margin-right: 50px;
-  };
+    font-size: 1.5em;
+  }
 
-  .menu__items_item{}
+  .menu{
+    &__items{
+      &_item{
+        margin-right: 20px;
+        font-size: 1.1em;
+      }
+    }
+  }
 }

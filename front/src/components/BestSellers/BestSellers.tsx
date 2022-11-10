@@ -22,6 +22,7 @@ const BestSellers: React.FC = () => {
           return (
             <div className={styles.img} key={key}>
               <Image
+                className={styles.img_img}
                 width={200}
                 height={250}
                 src={it.src}
