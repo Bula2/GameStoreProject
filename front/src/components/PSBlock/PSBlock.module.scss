@@ -38,5 +38,22 @@
       font-size: 1.3em;
     }
   }
+}
 
+@media (max-width: $sm) {
+  .photo_block{
+    flex-direction: column;
+    &__left{
+      text-align: center;
+      margin-left: 0;
+    }
+
+    &__right{
+      text-align: center;
+      margin-right: 0;
+    }
+    &__center{
+      margin-bottom: 20px;
+    }
+  }
 }
