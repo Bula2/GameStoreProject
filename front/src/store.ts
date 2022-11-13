@@ -1,9 +1,11 @@
 import {applyMiddleware, configureStore} from '@reduxjs/toolkit'
 import bestSellersReducer from "./features/bestSellers/bestSellersReducer";
+import gamesReducer from "./features/games/gamesReducer";
 
 export const store = configureStore({
   reducer: {
-    bestSellers: bestSellersReducer
+    bestSellers: bestSellersReducer,
+    games: gamesReducer
   },
 })
 
