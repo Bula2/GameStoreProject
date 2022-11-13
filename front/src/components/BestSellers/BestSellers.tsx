@@ -1,12 +1,14 @@
 import React from 'react';
 import {Image, Layout} from "antd";
 import styles from "./best-sellers.module.scss"
-import {bestSellersData} from "../../assets/bestSellersData";
 import {GetStaticProps} from "next";
 import Link from "next/link";
+import type { RootState } from '../../store'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 const BestSellers: React.FC = () => {
+  const bestSellersData = useSelector((state:RootState) => state.bestSellers.bestSellersData)
   return (
     <Layout.Content style={{padding: 16}}>
       <div className={styles.wrapper}>

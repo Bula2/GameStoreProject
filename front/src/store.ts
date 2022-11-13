@@ -1,7 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
+import {applyMiddleware, configureStore} from '@reduxjs/toolkit'
+import bestSellersReducer from "./features/bestSellers/bestSellersReducer";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    bestSellers: bestSellersReducer
+  },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
