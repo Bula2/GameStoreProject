@@ -78,3 +78,21 @@
     }
   }
 }
+
+@media (max-width: 465px) {
+  .title{
+    font-size: 1.4em;
+  }
+  .item{
+    font-size: 1.2em;
+  }
+  .footer_top{
+    &__right{
+      .list{
+        .item{
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}

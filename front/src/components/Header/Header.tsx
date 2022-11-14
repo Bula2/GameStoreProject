@@ -35,6 +35,27 @@ const Header = () => {
             </li>
           </ul>
         </div>
+        <div className={styles.mobile_menu}>
+          <ul className={styles.mobile_menu__items}>
+            <li className={styles.mobile_menu__items_item}>
+              <Link className={styles.mobile_menu__items_item_link} href={"/"}>Главная</Link>
+            </li>
+            <li className={styles.mobile_menu__items_item}>
+              <Link className={styles.mobile_menu__items_item_link} href={"/shop"}>Магазин</Link>
+            </li>
+            <li className={styles.mobile_menu__items_item}>
+              <Link className={styles.mobile_menu__items_item_link} href={"/instruction"}>Инструкция</Link>
+            </li>
+          </ul>
+          <ul>
+            <li className={styles.mobile_menu__items_item}>
+              <Link className={styles.mobile_menu__items_item_link} href={"/basket"}>Корзина</Link>
+            </li>
+            <li className={styles.mobile_menu__items_item}>
+              <Link className={styles.mobile_menu__items_item_link} href={"/auth"}>Авторизация</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
