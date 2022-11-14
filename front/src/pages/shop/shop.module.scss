@@ -7,8 +7,6 @@
   background-color: $first-color;
 
   .search {
-    max-width: 30%;
-
     &__label {
       font-size: 1.4em;
       color: $grey-color;
@@ -46,7 +44,40 @@
 .games{
   margin: 40px 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 20px;
   justify-items: center;
+}
+
+@media (max-width: $md) {
+  .games{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: $sm) {
+  .games{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: $xs) {
+  .games{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .top {
+    flex-direction: column;
+    justify-content: center;
+
+    .search {
+      &__label {
+        display: none;
+      }
+
+      &__input {
+        margin-bottom: 20px;
+      }
+    }
+  }
 }
