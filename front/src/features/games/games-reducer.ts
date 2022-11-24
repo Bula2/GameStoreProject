@@ -1,8 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface GamesState {
-  gamesData: {
+  data: {
     id: number,
     src: string,
     title: string,
@@ -12,7 +10,7 @@ export interface GamesState {
 }
 
 const initialState: GamesState = {
-  gamesData: [
+  data: [
     {id: 1, src: "/img/cyberpank.png", title: "Cyberpunk 2077", platform: "PS4/PS5", price: 2990},
     {id: 2, src: "/img/fifa22.png", title: "Fifa 22", platform: "PS4/PS5", price: 2990},
     {id: 3, src: "/img/godOfWar.png", title: "God Of War", platform: "PS4/PS5", price: 2990},
@@ -28,14 +26,12 @@ const initialState: GamesState = {
   ]
 }
 
-export const gamesSlice = createSlice({
-  name: 'games',
-  initialState,
-  reducers: {
-  },
-})
 
-// Action creators are generated for each case reducer function
-// export const {} = bestSellersSlice.actions
+export const gamesReducer = (state = initialState, action: any) => {
+  switch (action.type) {
+    default:
+      return (state);
+  }
+}
 
-export default gamesSlice.reducer
+export default gamesReducer

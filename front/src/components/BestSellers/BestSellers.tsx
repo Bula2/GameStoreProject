@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 const BestSellers: React.FC = () => {
-  const bestSellersData = useSelector((state:RootState) => state.bestSellers.bestSellersData)
+  const bestSellersData = useSelector((state:RootState) => state.bestsellers.data)
   return (
     <Layout.Content style={{padding: 16}}>
       <div className={styles.wrapper}>

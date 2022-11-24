@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Game from "../../components/ShopPage/Game/Game";
 
 const ShopPage = () => {
-  const gamesList = useSelector((state: RootState) => state.games.gamesData)
+  const gamesList = useSelector((state: RootState) => state.games.data)
 
   const [games, setData] = useState(gamesList);
 
