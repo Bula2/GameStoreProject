@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.wrapper{
+  border-top: 2px solid $first-color;
+  display: flex;
+  justify-content: space-between;
+  padding: 100px 300px;
+  min-height: 50vh;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+}

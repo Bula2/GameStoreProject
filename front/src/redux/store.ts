@@ -1,11 +1,13 @@
 import {applyMiddleware, configureStore} from '@reduxjs/toolkit'
-import bestsellersReducer from "./features/bestSellers/bestsellers-reducer";
-import gamesReducer from "./features/games/games-reducer";
+import bestsellersReducer from "./bestsellers-reducer";
+import gamesReducer from "./games-reducer";
+import basketReducer from "./basket-reducer";
 
 export const store = configureStore({
   reducer: {
     bestsellers: bestsellersReducer,
-    games: gamesReducer
+    games: gamesReducer,
+    basket: basketReducer,
   },
 })
 

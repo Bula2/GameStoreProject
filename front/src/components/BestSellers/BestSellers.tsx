@@ -3,7 +3,7 @@ import {Image, Layout} from "antd";
 import styles from "./best-sellers.module.scss"
 import {GetStaticProps} from "next";
 import Link from "next/link";
-import type { RootState } from '../../store'
+import type { RootState } from '../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
 
 

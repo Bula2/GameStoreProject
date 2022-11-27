@@ -4,15 +4,15 @@ import styles from "./shop.module.scss";
 import Fuse from "fuse.js"
 import cx from "classnames"
 import Link from "next/link";
-import type { RootState } from '../../store'
+import type { RootState } from '../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
 import Game from "../../components/ShopPage/Game/Game";
 
 const ShopPage = () => {
   const gamesList = useSelector((state: RootState) => state.games.data)
+  const dispatch = useDispatch()
 
   const [games, setData] = useState(gamesList);
-
 
   const searchData = (pattern: string) => {
     if (!pattern) {

@@ -3,6 +3,8 @@ import styles from "./game.module.scss";
 import {Button, Image} from "antd";
 import Link from "next/link";
 import cx from "classnames";
+import {useDispatch} from "react-redux";
+import {addItemToBasket} from "../../../redux/basket-reducer";
 
 interface IGame {
   id: number,
@@ -15,8 +17,10 @@ interface IGame {
 const Game: React.FC<IGame> = (props) => {
 
   const [alert, useAlert] = useState(true)
+  const dispatch = useDispatch()
 
   const showAlert = () => {
+    dispatch(addItemToBasket(props.id, props.src, props.title, props.platform, props.price))
     useAlert(false)
     setTimeout(() => useAlert(true), 2000)
   }
