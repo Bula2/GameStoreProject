@@ -4,14 +4,16 @@ import {Button, Image} from "antd";
 import Link from "next/link";
 import cx from "classnames";
 import {useDispatch} from "react-redux";
-import {addItemToBasket} from "../../../redux/basket-reducer";
+import {addItemToBasket, delItemFromBasket} from "../../../redux/basket-reducer";
 
 interface IGame {
   id: number,
   src: string,
   title: string,
   platform: string,
-  price: number
+  price: number,
+  isBasket: boolean
+  delItem?: (id: number) => void
 }
 
 const Game: React.FC<IGame> = (props) => {
@@ -39,7 +41,16 @@ const Game: React.FC<IGame> = (props) => {
         <div className={styles.item_title}>{props.title}</div>
         <div className={styles.item_platform}>{props.platform}</div>
         <div className={styles.item_price}>{props.price} ₽</div>
-        <div className={styles.item_button} onClick={() => showAlert()}>Добавить в корзину</div>
+        {props.isBasket ?
+          <div className={styles.item_button}
+               onClick={() => props.delItem!(props.id)}>
+            Удалить из корзины
+          </div> :
+          <div className={styles.item_button}
+               onClick={() => showAlert()}>
+            Добавить в корзину
+          </div>
+        }
       </div>
       <div className={cx(alert && styles.hide, styles.alert)}>Игра добавлена в корзину</div>
     </div>

@@ -57,6 +57,7 @@ const ShopPage = () => {
             <Game key={it.id} id={it.id}
                   src={it.src} title={it.title}
                   platform={it.platform} price={it.price}
+                  isBasket={false}
             />
           )}
         </div>
