@@ -4,12 +4,11 @@ import Game from "./ShopPage/Game/Game";
 import {useDispatch} from "react-redux";
 
 interface IBasketList {
-  basketList: IGame[]
+  basketList: IGame[];
+  delItem: (id: number) => void;
 }
 
-const BasketList: React.FC<IBasketList> = ({basketList}) => {
-  const dispatch = useDispatch()
-  const delItem = (id: number) => dispatch(delItemFromBasket(id))
+const BasketList: React.FC<IBasketList> = ({basketList, delItem}) => {
   return (
     <>
       {basketList.map(it =>
