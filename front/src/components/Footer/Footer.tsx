@@ -22,6 +22,7 @@ const Footer = () => {
             <li className={styles.item}><Link href={"/instruction"}>Инструкция</Link></li>
             <li className={styles.item}><Link href={"/basket"}>Корзина</Link></li>
             <li className={styles.item}><Link href={"/auth"}>Авторизация</Link></li>
+            <li className={styles.item}><Link href={"/admin"}>Администрирование</Link></li>
           </ul>
         </div>
       </div>
