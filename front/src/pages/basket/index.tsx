@@ -21,7 +21,7 @@ const BasketPage: React.FC<IBasketPage> = ({basketList, delItemFromBasket}) => {
       accumulator + currentValue.price, 0)
   return (
     <MainLayout>
-      <div className={styles.wrapper}>
+      <div className={basketList.length === 0 ? styles.empty_wrapper :styles.wrapper}>
         <div className={styles.list}>
           <BasketList basketList={basketList} delItem={delItemFromBasket}/>
         </div>

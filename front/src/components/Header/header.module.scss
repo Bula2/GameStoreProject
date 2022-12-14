@@ -79,23 +79,6 @@
 }
 
 @media (max-width: $xs) {
-  .bottom {
-    justify-content: center;
-  }
-  .header_title {
-    display: none;
-  }
-
-  .menu {
-    &__items {
-      &_item {
-        margin-right: 15px;
-      }
-    }
-  }
-}
-
-@media (max-width: 450px) {
   .header_title {
     display: block;
   }
@@ -118,13 +101,23 @@
       &_item {
         color: black;
         cursor: pointer;
+        font-size: 16px;
         a {
           color: black;
+
           &:active, &:hover {
             color: $links-color;
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .mobile_menu__items {
+    &_item {
+      font-size: 12px;
     }
   }
 }
