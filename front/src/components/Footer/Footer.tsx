@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { faVk } from '@fortawesome/free-brands-svg-icons';
@@ -6,8 +6,11 @@ import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import styles from "./footer.module.scss"
 import {useRouter} from "next/router";
 import Link from "next/link";
+import {useSelector} from "react-redux";
+import {RootState} from "../../redux/store";
 
 const Footer = () => {
+  const isAdmin = useSelector((state: RootState) => state.admin.isAdmin)
   const router = useRouter()
   return (
     <div className={styles.footer}>
@@ -22,7 +25,7 @@ const Footer = () => {
             <li className={styles.item}><Link href={"/instruction"}>Инструкция</Link></li>
             <li className={styles.item}><Link href={"/basket"}>Корзина</Link></li>
             <li className={styles.item}><Link href={"/auth"}>Авторизация</Link></li>
-            <li className={styles.item}><Link href={"/admin"}>Администрирование</Link></li>
+            {isAdmin && <li className={styles.item}><Link href={"/admin"}>Администрирование</Link></li>}
           </ul>
         </div>
       </div>

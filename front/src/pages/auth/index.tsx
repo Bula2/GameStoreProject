@@ -4,8 +4,11 @@ import styles from "./auth.module.scss";
 import {Field, Form, Formik} from "formik";
 import Button from "../../modules/Button/Button";
 import cx from "classnames"
+import {useDispatch} from "react-redux";
+import {showAdminPage} from "../../redux/admin-reducer";
 
 const AuthPage = () => {
+  const dispatch = useDispatch()
 
   const validateEmail = (value: string) => {
     if (!value) {
@@ -32,7 +35,9 @@ const AuthPage = () => {
         <Formik initialValues={{
           email: "",
           password: "",
+          isAdmin: false,
         }} onSubmit={(values, {resetForm}) => {
+          dispatch(showAdminPage(values.isAdmin))
           console.log("submit:", values)
           resetForm()
         }}>
@@ -56,6 +61,10 @@ const AuthPage = () => {
               {errors.password && touched.password && (
                 <div className={styles.errors}>{errors.password}</div>
               )}
+              <label className={styles.checkbox}>
+                <Field type="checkbox" name="isAdmin"/>
+                <span className={styles.checkbox__text}>Войти как администратор</span>
+              </label>
               <div className={styles.button}>
                 <Button text={"Авторизоваться"} type={"submit"}/>
               </div>
