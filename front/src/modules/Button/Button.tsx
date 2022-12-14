@@ -6,12 +6,13 @@ interface IButton{
   className?: string;
   text: string;
   onCLick?: () => void;
+  type? : "button" | "submit" | "reset" | undefined;
 }
 
-const Button: React.FC<IButton> = ({className, text, onCLick}) => {
+const Button: React.FC<IButton> = ({className, text, onCLick, type}) => {
   return (
     <div>
-      <button onClick={onCLick} className={cx(className, styles.button)}>
+      <button type={type} onClick={onCLick} className={cx(className, styles.button)}>
         {text}
       </button>
     </div>
