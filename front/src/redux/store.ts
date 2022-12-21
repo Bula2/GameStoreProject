@@ -3,13 +3,15 @@ import bestsellersReducer from "./bestsellers-reducer";
 import gamesReducer from "./games-reducer";
 import basketReducer from "./basket-reducer";
 import adminReducer from "./admin-reducer";
+import ordersReducer from "./orders-reducer";
 
 export const store = configureStore({
   reducer: {
     bestsellers: bestsellersReducer,
     games: gamesReducer,
     basket: basketReducer,
-    admin: adminReducer
+    admin: adminReducer,
+    orders: ordersReducer
   },
 })
 
