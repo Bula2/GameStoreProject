@@ -1,16 +1,14 @@
 import React from 'react';
-import MainLayout from "../../layouts/MainLayout";
-import styles from "./auth.module.scss";
-import {Field, Form, Formik} from "formik";
-import Button from "../../modules/Button/Button";
-import cx from "classnames"
 import {useDispatch} from "react-redux";
+import MainLayout from "../../layouts/MainLayout";
+import styles from "../auth/auth.module.scss";
+import {Field, Form, Formik} from "formik";
 import {showAdminPage} from "../../redux/admin-reducer";
-import Link from 'next/link';
+import cx from "classnames";
+import Button from "../../modules/Button/Button";
+import {validateHeaderName} from "http";
 
-const AuthPage = () => {
-  const dispatch = useDispatch()
-
+const Reg = () => {
   const validateEmail = (value: string) => {
     if (!value) {
       return "Обязательное поле";
@@ -31,19 +29,40 @@ const AuthPage = () => {
     <MainLayout>
       <div className={styles.form}>
         <div className={styles.header}>
-          <h2>Авторизация</h2>
+          <h2>Регистрация</h2>
         </div>
         <Formik initialValues={{
+          name: "",
+          surname: "",
+          patronymic: "",
           email: "",
           password: "",
-          isAdmin: false,
         }} onSubmit={(values, {resetForm}) => {
-          dispatch(showAdminPage(values.isAdmin))
           console.log("submit:", values)
           resetForm()
         }}>
           {({errors, touched}) => (
             <Form>
+              <Field name="name"
+                     validate={validatePassword}
+                     placeholder={"Имя"}
+                     className={cx(styles.field)}>
+              </Field>
+              {errors.name && touched.name && (
+                <div className={styles.errors}>{errors.name}</div>
+              )}
+              <Field name="surname"
+                     validate={validatePassword}
+                     placeholder={"Фамилия"}
+                     className={cx(styles.field)}>
+              </Field>
+              {errors.surname && touched.surname && (
+                <div className={styles.errors}>{errors.surname}</div>
+              )}
+              <Field name="patronymic"
+                     placeholder={"Отчество"}
+                     className={cx(styles.field)}>
+              </Field>
               <Field name="email"
                      validate={validateEmail}
                      placeholder={"Электронная почта"}
@@ -62,21 +81,15 @@ const AuthPage = () => {
               {errors.password && touched.password && (
                 <div className={styles.errors}>{errors.password}</div>
               )}
-              <label className={styles.checkbox}>
-                <Field type="checkbox" name="isAdmin"/>
-                <span className={styles.checkbox__text}>Войти как администратор</span>
-              </label>
               <div className={styles.button}>
-                <Button text={"Авторизоваться"} type={"submit"}/>
+                <Button text={"Зарегистрироваться"} type={"submit"}/>
               </div>
             </Form>
           )}
         </Formik>
-        <br/>
-        <div>Нет аккаунта? <Link href={"/registration"}>Зарегистрироваться</Link></div>
       </div>
     </MainLayout>
-  );
+  )
 };
 
-export default AuthPage;
+export default Reg;

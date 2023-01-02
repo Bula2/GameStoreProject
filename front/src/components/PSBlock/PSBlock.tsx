@@ -13,7 +13,7 @@ const PsBlock = () => {
       </div>
       <div className={styles.photo_block__right}>
         <p>
-          Игры на PS4/PS5. PS.PLus Essential/Extra/Deluxe. Аккаунты.
+          Игры на PS4/PS5. PS.Plus Essential/Extra/Deluxe. Аккаунты.
           <br/>
           Честные цены. Быстрый доступ. Минимальные усилия.
         </p>
