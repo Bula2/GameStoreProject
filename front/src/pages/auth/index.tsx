@@ -73,7 +73,7 @@ const AuthPage = () => {
           )}
         </Formik>
         <br/>
-        <div>Нет аккаунта? <Link href={"/registration"}>Зарегистрироваться</Link></div>
+        <div className={styles.link}>Нет аккаунта? <Link href={"/registration"}>Зарегистрироваться</Link></div>
       </div>
     </MainLayout>
   );

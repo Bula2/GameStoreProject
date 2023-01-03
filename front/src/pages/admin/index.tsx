@@ -1,9 +1,13 @@
 import React from 'react';
 import MainLayout from "../../layouts/MainLayout";
 import styles from "./admin.module.scss"
-import {Table} from "antd";
+import {Checkbox, Table} from "antd";
+import {CheckboxChangeEvent} from "antd/es/checkbox";
 
 const AdminPage = () => {
+  const onChange = (e: CheckboxChangeEvent) => {
+    return;
+  }
   const dataSource = [
     {
       key: 1,
@@ -30,6 +34,11 @@ const AdminPage = () => {
 
   const columns = [
     {
+      title: 'Id',
+      dataIndex: 'key',
+      key: 'key'
+    },
+    {
       title: 'Дата',
       dataIndex: 'date',
       key: 'date',
@@ -49,6 +58,13 @@ const AdminPage = () => {
       dataIndex: 'price',
       key: 'price',
     },
+    {
+      title: 'Подтвердить',
+      key: 'action',
+      render: (_: any, row: any) => (
+        <Checkbox className={styles.row} onChange={onChange}>Выполнен</Checkbox>
+      )
+    }
   ];
   return (
     <MainLayout>
@@ -57,7 +73,7 @@ const AdminPage = () => {
                columns={columns}
                rowClassName={styles.row}
                bordered
-        />;
+        />
       </div>
     </MainLayout>
   );
