@@ -5,10 +5,10 @@ import {useDispatch} from "react-redux";
 
 interface IBasketList {
   basketList: IGame[];
-  delItem: (id_order: string) => void;
+  delItem: (id_order: number) => void;
 }
 
-const BasketList: React.FC<IBasketList> = ({basketList, delItem}) => {
+const   BasketList: React.FC<IBasketList> = ({basketList, delItem}) => {
   return (
     <>
       {basketList.map(it =>

@@ -4,18 +4,16 @@ import styles from "./basket.module.scss"
 import BasketOrder from "../../components/BasketOrder/basket-order";
 import {connect, useDispatch, useSelector} from "react-redux";
 import {RootState, store} from "../../redux/store";
-import {basketSelector} from "../../redux/basket-selectors";
-import Game from "../../components/ShopPage/Game/Game";
-import {BasketState, delItemFromBasket, getBasket} from "../../redux/basket-reducer";
+import {changeBasket, getBasket} from "../../redux/basket-reducer";
 import BasketList from "../../components/BasketList";
-import {delElFromBasket} from "../../api/api";
 
-interface IBasketPage{
-  basketList: BasketState[];
-  delItemFromBasket: (id: number) => void;
-}
+// interface IBasketPage{
+//   basketList: BasketState[];
+//   delItemFromBasket: (id: number) => void;
+// }
 
-const BasketPage: React.FC<{getBasket: (id_customer: string)=> void}> = ({getBasket}) => {
+const BasketPage: React.FC<{getBasket: (id_customer: string)=> void,
+  changeBasket: (id_customer: number) => void}> = ({getBasket, changeBasket}) => {
 
   useEffect(()=> {
     getBasket("1");
@@ -31,7 +29,7 @@ const BasketPage: React.FC<{getBasket: (id_customer: string)=> void}> = ({getBas
     <MainLayout>
       <div className={basketList.length === 0 ? styles.empty_wrapper :styles.wrapper}>
         <div className={styles.list}>
-          <BasketList basketList={basketList} delItem={delElFromBasket}/>
+          <BasketList basketList={basketList} delItem={changeBasket}/>
         </div>
         <div className={styles.order}>
           <BasketOrder count={basketList.length} price={basketSum}/>
@@ -42,4 +40,4 @@ const BasketPage: React.FC<{getBasket: (id_customer: string)=> void}> = ({getBas
 };
 
 export default connect((state: RootState) => ({}),
-  {getBasket})(BasketPage);
+  {getBasket, changeBasket})(BasketPage);

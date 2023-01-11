@@ -1,4 +1,5 @@
-import {getBasketApi} from "../api/api";
+import {delElFromBasket, getBasketApi} from "../api/api";
+import date from "async-validator/dist-types/validator/date";
 
 const ADD_ITEM = "basket/ADD_ITEM";
 const DEL_ITEM = "basket/DEL_ITEM";
@@ -39,12 +40,12 @@ const shopReducer = (state = initialState, action: any) => {
     //   }
     // }
     //
-    // case DEL_ITEM: {
-    //   state.items.delete(action.id);
-    //   return {
-    //     ...state
-    //   }
-    // }
+    case DEL_ITEM: {
+      return {
+        ...state,
+        data: state.data.filter(it => it.id_order !== action.id_order)
+      }
+    }
     case SET_BASKET:
       return {
         ...state,
@@ -59,14 +60,19 @@ const shopReducer = (state = initialState, action: any) => {
 export const addItemToBasket = (id: number, src: string, title: string, platform: string, price: number) =>
   ({type: ADD_ITEM, id, src, title, platform, price})
 
-export const delItemFromBasket = (id: number) =>
-  ({type: DEL_ITEM, id})
+export const delItemFromBasket = (id_order: number) =>
+  ({type: DEL_ITEM, id_order})
 
 export const setBasket = (data: BasketState) => ({type: SET_BASKET, data})
 
 export const getBasket = (id_customer: string) => async (dispatch: (arg0: { type: string; data: BasketState; }) => void) => {
   let response = await getBasketApi(id_customer);
   dispatch(setBasket(response?.data))
+}
+
+export const changeBasket = (id_order: number) => async (dispatch: (arg0: { type: string; id_order: number; }) => void) => {
+  await delElFromBasket(id_order.toString());
+  dispatch(delItemFromBasket(id_order))
 }
 
 export default shopReducer;

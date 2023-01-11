@@ -4,11 +4,15 @@ import styles from "./auth.module.scss";
 import {Field, Form, Formik} from "formik";
 import Button from "../../modules/Button/Button";
 import cx from "classnames"
-import {useDispatch} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import {showAdminPage} from "../../redux/admin-reducer";
 import Link from 'next/link';
+import {RootState} from "../../redux/store";
+import {setUser} from "../../redux/user-reducer";
 
-const AuthPage = () => {
+const AuthPage: React.FC<{setUser: (email: string,
+                                    password: string,
+                                    isAdmin: boolean) => void}> = ({setUser}) => {
   const dispatch = useDispatch()
 
   const validateEmail = (value: string) => {
@@ -38,8 +42,8 @@ const AuthPage = () => {
           password: "",
           isAdmin: false,
         }} onSubmit={(values, {resetForm}) => {
-          dispatch(showAdminPage(values.isAdmin))
-          console.log("submit:", values)
+          setUser(values.email, values.password, values.isAdmin)
+          // dispatch(showAdminPage(values.isAdmin))
           resetForm()
         }}>
           {({errors, touched}) => (
@@ -79,4 +83,5 @@ const AuthPage = () => {
   );
 };
 
-export default AuthPage;
+export default connect((state: RootState) => ({}),
+  {setUser})(AuthPage);

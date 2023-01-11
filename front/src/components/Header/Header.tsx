@@ -31,6 +31,9 @@ const Header = () => {
               <Link className={styles.menu__items_item_link} href={"/basket"}>Корзина</Link>
             </li>
             <li className={styles.menu__items_item}>
+              <Link className={styles.menu__items_item_link} href={"/user"}>Аккаунт</Link>
+            </li>
+            <li className={styles.menu__items_item}>
               <Link className={styles.menu__items_item_link} href={"/auth"}>Авторизация</Link>
             </li>
           </ul>
@@ -50,6 +53,9 @@ const Header = () => {
           <ul>
             <li className={styles.mobile_menu__items_item}>
               <Link className={styles.mobile_menu__items_item_link} href={"/basket"}>Корзина</Link>
+            </li>
+            <li className={styles.mobile_menu__items_item}>
+              <Link className={styles.mobile_menu__items_item_link} href={"/user"}>Аккаунт</Link>
             </li>
             <li className={styles.mobile_menu__items_item}>
               <Link className={styles.mobile_menu__items_item_link} href={"/auth"}>Авторизация</Link>

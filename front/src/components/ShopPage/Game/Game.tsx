@@ -15,7 +15,7 @@ interface IGame {
   price: number,
   isBasket: boolean,
   idOrder?: number,
-  delItem?: (id_order: string) => void
+  delItem?: (id_order: number) => void
 }
 
 const Game: React.FC<IGame> = (props) => {
@@ -48,7 +48,7 @@ const Game: React.FC<IGame> = (props) => {
         <div className={styles.item_price}>{props.price} ₽</div>
         {props.isBasket ?
           <div className={styles.item_button}
-               onClick={() => props.delItem!(props?.idOrder?.toString()!)}>
+               onClick={() => props.delItem!(props?.idOrder!)}>
             Удалить из корзины
           </div> :
           <div className={styles.item_button}

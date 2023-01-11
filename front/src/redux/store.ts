@@ -4,6 +4,7 @@ import gamesReducer from "./games-reducer";
 import basketReducer from "./basket-reducer";
 import adminReducer from "./admin-reducer";
 import ordersReducer from "./orders-reducer";
+import userReducer from "./user-reducer";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     games: gamesReducer,
     basket: basketReducer,
     admin: adminReducer,
-    orders: ordersReducer
+    orders: ordersReducer,
+    user: userReducer
   },
 })
 

@@ -12,14 +12,13 @@ import axios from "axios";
 
 const ShopPage: React.FC<{getGames: () => void}> = ({getGames}) => {
 
-  useEffect(()=> {
+  useEffect(() => {
     getGames();
   }, [])
+
   const dispatch = useDispatch()
   const gamesList = useSelector((state: RootState) => state.games.data)
-
   const [games, setData] = useState(gamesList);
-
   const searchData = (pattern: string) => {
     if (!pattern) {
       setData(gamesList);
@@ -59,7 +58,7 @@ const ShopPage: React.FC<{getGames: () => void}> = ({getGames}) => {
           </div>
         </div>
         <div className={styles.games}>
-          {games.map((it: { id_product: React.Key | null | undefined; images: string[]; title: string; price: number; }) =>
+          {gamesList.map((it: { id_product: React.Key | null | undefined; images: string[]; title: string; price: number; }) =>
             <Game key={it.id_product} id={it.id_product as number}
                   src={it.images[0]} title={it.title}
                   price={it.price} isBasket={false}
