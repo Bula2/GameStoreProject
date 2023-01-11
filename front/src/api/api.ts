@@ -39,3 +39,12 @@ export const delElFromBasket = async (id_order: string) => {
     console.log(err)
   }
 }
+
+export const addUser = async (surname: string, name: string, patronymic:string, email: string, password: string) => {
+  try{
+    return await instance.post(`Insert2`, {TableNames: "customer", surname, name, patronymic, email, password})
+  }
+  catch (err) {
+    console.log(err)
+  }
+}

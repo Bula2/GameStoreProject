@@ -7,6 +7,7 @@ import {showAdminPage} from "../../redux/admin-reducer";
 import cx from "classnames";
 import Button from "../../modules/Button/Button";
 import {validateHeaderName} from "http";
+import {addUser} from "../../api/api";
 
 const Reg = () => {
   const validateEmail = (value: string) => {
@@ -37,8 +38,8 @@ const Reg = () => {
           patronymic: "",
           email: "",
           password: "",
-        }} onSubmit={(values, {resetForm}) => {
-          console.log("submit:", values)
+        }} onSubmit = { async (values, {resetForm}) => {
+           await addUser(values.surname, values.name, values.patronymic, values.email, values.password)
           resetForm()
         }}>
           {({errors, touched}) => (
@@ -63,6 +64,9 @@ const Reg = () => {
                      placeholder={"Отчество"}
                      className={cx(styles.field)}>
               </Field>
+              {errors.surname && touched.surname && (
+                <div className={styles.errors}>{errors.patronymic}</div>
+              )}
               <Field name="email"
                      validate={validateEmail}
                      placeholder={"Электронная почта"}
