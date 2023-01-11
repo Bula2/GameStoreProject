@@ -13,7 +13,7 @@ const BasketOrder: React.FC<IBasketOrder> = ({price=0, count=0}) => {
       <Button text={"Оформить"}/>
       <div className={styles.modal}>
         <div className={styles.modal__price}>Итого: {price} ₽</div>
-        <div className={styles.modal__count}>Количетсво товаров: {count}</div>
+        <div className={styles.modal__count}>Количество товаров: {count}</div>
       </div>
     </div>
   );

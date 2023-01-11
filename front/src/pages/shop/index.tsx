@@ -1,16 +1,22 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MainLayout from "../../layouts/MainLayout";
 import styles from "./shop.module.scss";
 import Fuse from "fuse.js"
 import cx from "classnames"
 import Link from "next/link";
-import type { RootState } from '../../redux/store'
-import { useSelector, useDispatch } from 'react-redux'
+import type {RootState} from '../../redux/store'
+import {useSelector, useDispatch, connect} from 'react-redux'
 import Game from "../../components/ShopPage/Game/Game";
+import {getGames} from "../../redux/games-reducer";
+import axios from "axios";
 
-const ShopPage = () => {
-  const gamesList = useSelector((state: RootState) => state.games.data)
+const ShopPage: React.FC<{getGames: () => void}> = ({getGames}) => {
+
+  useEffect(()=> {
+    getGames();
+  }, [])
   const dispatch = useDispatch()
+  const gamesList = useSelector((state: RootState) => state.games.data)
 
   const [games, setData] = useState(gamesList);
 
@@ -48,16 +54,15 @@ const ShopPage = () => {
           </div>
           <div className={styles.link_to_basket}>
             <Link className={styles.link_to_basket__link} href={"/basket"}>
-            В корзину
+              В корзину
             </Link>
           </div>
         </div>
         <div className={styles.games}>
-          {games.map(it =>
-            <Game key={it.id} id={it.id}
-                  src={it.src} title={it.title}
-                  platform={it.platform} price={it.price}
-                  isBasket={false}
+          {games.map((it: { id_product: React.Key | null | undefined; images: string[]; title: string; price: number; }) =>
+            <Game key={it.id_product} id={it.id_product as number}
+                  src={it.images[0]} title={it.title}
+                  price={it.price} isBasket={false}
             />
           )}
         </div>
@@ -67,4 +72,5 @@ const ShopPage = () => {
   );
 };
 
-export default ShopPage;
+export default connect((state: RootState) => ({}),
+  {getGames})(ShopPage);

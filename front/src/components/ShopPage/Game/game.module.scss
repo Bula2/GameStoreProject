@@ -6,6 +6,8 @@
     padding: 4px;
     color: $second-color;
     background: $first-color;
+    word-wrap: break-word;
+    max-width: 196px;
   }
   &_info{
     border: 2px solid black;

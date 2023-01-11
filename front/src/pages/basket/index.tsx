@@ -6,24 +6,32 @@ import {connect, useDispatch, useSelector} from "react-redux";
 import {RootState, store} from "../../redux/store";
 import {basketSelector} from "../../redux/basket-selectors";
 import Game from "../../components/ShopPage/Game/Game";
-import {delItemFromBasket, IGame} from "../../redux/basket-reducer";
+import {BasketState, delItemFromBasket, getBasket} from "../../redux/basket-reducer";
 import BasketList from "../../components/BasketList";
+import {delElFromBasket} from "../../api/api";
 
 interface IBasketPage{
-  basketList: IGame[];
+  basketList: BasketState[];
   delItemFromBasket: (id: number) => void;
 }
 
-const BasketPage: React.FC<IBasketPage> = ({basketList, delItemFromBasket}) => {
+const BasketPage: React.FC<{getBasket: (id_customer: string)=> void}> = ({getBasket}) => {
+
+  useEffect(()=> {
+    getBasket("1");
+  }, [])
+
+  const basketList = useSelector((state: RootState) => state.basket.data)
 
   const basketSum = basketList.reduce(
-    (accumulator, currentValue) =>
+    (accumulator: any, currentValue: { price: any }) =>
       accumulator + currentValue.price, 0)
+
   return (
     <MainLayout>
       <div className={basketList.length === 0 ? styles.empty_wrapper :styles.wrapper}>
         <div className={styles.list}>
-          <BasketList basketList={basketList} delItem={delItemFromBasket}/>
+          <BasketList basketList={basketList} delItem={delElFromBasket}/>
         </div>
         <div className={styles.order}>
           <BasketOrder count={basketList.length} price={basketSum}/>
@@ -33,6 +41,5 @@ const BasketPage: React.FC<IBasketPage> = ({basketList, delItemFromBasket}) => {
   );
 };
 
-export default connect((state: RootState) => ({
-  basketList: basketSelector(state)
-}), {delItemFromBasket})(BasketPage);
+export default connect((state: RootState) => ({}),
+  {getBasket})(BasketPage);
