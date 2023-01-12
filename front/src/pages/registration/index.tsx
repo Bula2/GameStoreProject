@@ -8,8 +8,11 @@ import cx from "classnames";
 import Button from "../../modules/Button/Button";
 import {validateHeaderName} from "http";
 import {addUser} from "../../api/api";
+import {useRouter} from "next/router";
 
 const Reg = () => {
+
+  const router = useRouter()
   const validateEmail = (value: string) => {
     if (!value) {
       return "Обязательное поле";
@@ -39,7 +42,8 @@ const Reg = () => {
           email: "",
           password: "",
         }} onSubmit = { async (values, {resetForm}) => {
-           await addUser(values.surname, values.name, values.patronymic, values.email, values.password)
+          await addUser(values.surname, values.name, values.patronymic, values.email, values.password)
+          await router.push("/user")
           resetForm()
         }}>
           {({errors, touched}) => (

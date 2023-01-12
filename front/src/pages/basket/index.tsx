@@ -7,13 +7,12 @@ import {RootState, store} from "../../redux/store";
 import {changeBasket, getBasket} from "../../redux/basket-reducer";
 import BasketList from "../../components/BasketList";
 
-// interface IBasketPage{
-//   basketList: BasketState[];
-//   delItemFromBasket: (id: number) => void;
-// }
+interface IBasketPage{
+  getBasket: (id_customer: string)=> void,
+  changeBasket: (id_customer: number) => void
+}
 
-const BasketPage: React.FC<{getBasket: (id_customer: string)=> void,
-  changeBasket: (id_customer: number) => void}> = ({getBasket, changeBasket}) => {
+const BasketPage: React.FC<IBasketPage> = ({getBasket, changeBasket}) => {
 
   useEffect(()=> {
     getBasket("1");
