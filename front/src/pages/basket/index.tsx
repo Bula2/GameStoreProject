@@ -17,7 +17,7 @@ interface IBasketPage{
 const BasketPage: React.FC<IBasketPage> = ({getBasket, changeBasket}) => {
 
   useEffect(()=> {
-    isLogin && getBasket(user?.id_customer);
+    isLogin && user.name && getBasket(user?.id_customer);
   }, [])
 
   const user = useSelector((state: RootState) => state.user.user)
@@ -31,7 +31,7 @@ const BasketPage: React.FC<IBasketPage> = ({getBasket, changeBasket}) => {
 
   return (
     <MainLayout>
-      { isLogin ?
+      { isLogin && user.name ?
       <div className={basketList.length === 0 ? styles.empty_wrapper :styles.wrapper}>
         <div className={styles.list}>
           <BasketList basketList={basketList} delItem={changeBasket}/>

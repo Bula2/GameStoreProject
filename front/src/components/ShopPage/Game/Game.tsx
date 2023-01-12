@@ -26,7 +26,7 @@ const Game: React.FC<IGame> = (props) => {
   const isLogin = useSelector((state: RootState) => state.user.isLogin)
   const showAlert = async () => {
     // dispatch(addItemToBasket(props.id, props.src, props.title, "PS4/PS5", props.price))
-    isLogin && await addGameToOrder(props.id.toString(), user.id_customer, "1")
+    isLogin && user.name && await addGameToOrder(props.id.toString(), user.id_customer, "1")
     setAlert(false)
     setTimeout(() => setAlert(true), 2000)
   }
