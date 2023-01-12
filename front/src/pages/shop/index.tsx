@@ -8,7 +8,6 @@ import type {RootState} from '../../redux/store'
 import {useSelector, useDispatch, connect} from 'react-redux'
 import Game from "../../components/ShopPage/Game/Game";
 import {getGames} from "../../redux/games-reducer";
-import axios from "axios";
 
 const ShopPage: React.FC<{getGames: () => void}> = ({getGames}) => {
 
@@ -16,12 +15,11 @@ const ShopPage: React.FC<{getGames: () => void}> = ({getGames}) => {
     getGames();
   }, [])
 
-  const dispatch = useDispatch()
   const gamesList = useSelector((state: RootState) => state.games.data)
   const [games, setData] = useState(gamesList);
   const searchData = (pattern: string) => {
     if (!pattern) {
-      setData(gamesList);
+      setData(games);
       return;
     }
 
