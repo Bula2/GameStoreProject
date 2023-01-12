@@ -3,10 +3,11 @@ import styles from "./game.module.scss";
 import {Button, Image} from "antd";
 import Link from "next/link";
 import cx from "classnames";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addItemToBasket, delItemFromBasket} from "../../../redux/basket-reducer";
 import {addGameToOrder} from "../../../api/api";
 import axios from "axios";
+import {RootState} from "../../../redux/store";
 
 interface IGame {
   id: number,
@@ -21,11 +22,11 @@ interface IGame {
 const Game: React.FC<IGame> = (props) => {
 
   const [alert, setAlert] = useState(true)
-  const dispatch = useDispatch()
-
+  const user = useSelector((state: RootState) => state.user.user)
+  const isLogin = useSelector((state: RootState) => state.user.isLogin)
   const showAlert = async () => {
     // dispatch(addItemToBasket(props.id, props.src, props.title, "PS4/PS5", props.price))
-    await addGameToOrder(props.id.toString(), "1", "1")
+    isLogin && await addGameToOrder(props.id.toString(), user.id_customer, "1")
     setAlert(false)
     setTimeout(() => setAlert(true), 2000)
   }

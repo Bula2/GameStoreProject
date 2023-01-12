@@ -38,10 +38,10 @@ const UserPage = () => {
         <Button text={"Выйти"} className={styles.button} onCLick={() => dispatch(logout())}/>
       </div> :
         <div className={styles.block}>
-          <div style={{fontSize: 20}}>
+          <div style={{fontSize: 20, marginBottom: 10}}>
           Вы не авторизованы
           </div>
-          <Button text={"Войти"} className={styles.button} onCLick={() => router.push("/auth")}/>
+          <Button text={"Войти"} onCLick={() => router.push("/auth")}/>
         </div>
       }
     </MainLayout>
