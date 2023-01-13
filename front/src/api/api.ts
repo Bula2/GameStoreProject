@@ -66,3 +66,12 @@ export const createOrderApi = (id_customer: string) => {
     console.log(err)
   }
 }
+
+// export const getAdmin = () => {
+//   try{
+//     return instance.get(`SelectLog`)
+//   }
+//   catch (err) {
+//     console.log(err)
+//   }
+// }

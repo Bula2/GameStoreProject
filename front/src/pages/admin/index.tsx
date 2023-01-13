@@ -1,47 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MainLayout from "../../layouts/MainLayout";
 import styles from "./admin.module.scss"
 import {Checkbox, Table} from "antd";
 import {CheckboxChangeEvent} from "antd/es/checkbox";
+import axios from "axios";
 
-const AdminPage = () => {
+const AdminPage: React.FC = () => {
+
+  const [dataSource, setDataSource] = useState([])
+
+  useEffect(()=>{
+    axios.get("http://localhost:5000/api/Store/SelectLog")
+      .then((response) => setDataSource(response.data))
+      .catch((reject) => console.log(reject))
+  }, [])
   const onChange = (e: CheckboxChangeEvent) => {
     return;
   }
-  const dataSource = [
-    {
-      key: 1,
-      date: "22.10",
-      email: "123@123.com",
-      order: ["Fifa 23 ", "God of War"],
-      price: 2200
-    },
-    {
-      key: 2,
-      date: "22.10",
-      email: "ff@123.com",
-      order: ["God of War"],
-      price: 1100
-    },
-    {
-      key: 3,
-      date: "22.10",
-      email: "fff@123.com",
-      order: ["Fifa 23 "],
-      price: 1100
-    },
-  ];
-
   const columns = [
     {
       title: 'Id',
-      dataIndex: 'key',
-      key: 'key'
+      dataIndex: 'id_product_log',
+      key: 'id_product_log'
     },
     {
       title: 'Дата',
-      dataIndex: 'date',
-      key: 'date',
+      dataIndex: 'datetime',
+      key: 'datetime',
     },
     {
       title: 'Электронная почта',
@@ -50,8 +35,8 @@ const AdminPage = () => {
     },
     {
       title: 'Заказ',
-      dataIndex: 'order',
-      key: 'order',
+      dataIndex: 'title',
+      key: 'title',
     },
     {
       title: 'Цена',
