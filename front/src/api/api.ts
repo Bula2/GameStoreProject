@@ -57,3 +57,12 @@ export const getUser = (email: string, password: string, isAdmin: boolean) => {
     console.log(err)
   }
 }
+
+export const createOrderApi = (id_customer: string) => {
+  try{
+    return instance.get(`PushOrder`, {params:{idCustomer: id_customer}})
+  }
+  catch (err) {
+    console.log(err)
+  }
+}

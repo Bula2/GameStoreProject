@@ -1,4 +1,4 @@
-import {delElFromBasket, getBasketApi} from "../api/api";
+import {createOrderApi, delElFromBasket, getBasketApi} from "../api/api";
 import date from "async-validator/dist-types/validator/date";
 
 const ADD_ITEM = "basket/ADD_ITEM";
@@ -73,6 +73,11 @@ export const getBasket = (id_customer: string) => async (dispatch: (arg0: { type
 export const changeBasket = (id_order: number) => async (dispatch: (arg0: { type: string; id_order: number; }) => void) => {
   await delElFromBasket(id_order.toString());
   dispatch(delItemFromBasket(id_order))
+}
+
+export const createOrder = (id_customer: string) => async () => {
+  const response = await createOrderApi(id_customer)
+  console.log(response)
 }
 
 export default shopReducer;
