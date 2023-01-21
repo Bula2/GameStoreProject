@@ -9,7 +9,7 @@ import Button from "../../modules/Button/Button";
 import {validateHeaderName} from "http";
 import {addUser} from "../../api/api";
 import {useRouter} from "next/router";
-
+import bcrypt from "bcryptjs";
 const Reg = () => {
 
   const router = useRouter()
@@ -42,7 +42,8 @@ const Reg = () => {
           email: "",
           password: "",
         }} onSubmit = { async (values, {resetForm}) => {
-          await addUser(values.surname, values.name, values.patronymic, values.email, values.password)
+          const hashPassword = await bcrypt.hash(values.password, 10)
+          await addUser(values.surname, values.name, values.patronymic, values.email, hashPassword)
           await router.push("/user")
           resetForm()
         }}>

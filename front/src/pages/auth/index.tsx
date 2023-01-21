@@ -10,6 +10,7 @@ import Link from 'next/link';
 import {RootState} from "../../redux/store";
 import {logout, setUser} from "../../redux/user-reducer";
 import {useRouter} from "next/router";
+import bcrypt from "bcryptjs";
 
 const AuthPage: React.FC<{
   setUser: (email: string,
@@ -47,7 +48,8 @@ const AuthPage: React.FC<{
             password: "",
             isAdmin: false,
           }} onSubmit={async (values, {resetForm}) => {
-            setUser(values.email, values.password, values.isAdmin)
+            const hashPassword = await bcrypt.hash(values.password, 10)
+            setUser(values.email, hashPassword, values.isAdmin)
             await router.push("/user")
             dispatch(showAdminPage(values.isAdmin))
             resetForm()
